@@ -1,5 +1,7 @@
 package ar.pablitar.vainilla.commons.math
 
+import java.awt.geom.AffineTransform
+
 object Vector2D {
   implicit def toVector2D(t1: (Double, Double)) = Vector2D(t1._1, t1._2)
   implicit def toVector2DFromInt(t1: (Int, Int)) = Vector2D(t1._1, t1._2)
@@ -10,6 +12,7 @@ object Vector2D {
 }
 
 case class Vector2D(var x1: Double, var x2: Double) {
+  
   def +(aVector: Vector2D) = Vector2D(aVector.x1 + x1, aVector.x2 + x2)
 
   def -(aVector: Vector2D) = Vector2D(x1 - aVector.x1, x2 - aVector.x2)
@@ -71,5 +74,7 @@ case class Vector2D(var x1: Double, var x2: Double) {
   def isOppositeTo(aVector: Vector2D) = {
     this.dotProduct(aVector) < 0
   }
+
+  def translationMatrix = AffineTransform.getTranslateInstance(x1, x2)
 
 }

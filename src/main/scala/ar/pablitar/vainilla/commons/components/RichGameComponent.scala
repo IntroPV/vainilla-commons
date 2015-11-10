@@ -25,8 +25,8 @@ class RichGameComponent[T <: GameScene] extends GameComponent[T] with Positionab
 
   def center = this.position + (this.width / 2, this.height / 2)
 
-  def topLeft = this.position
-  def bottomLeft = this.position + (0.0, this.height)
-  def bottomRight = this.position + (this.width, this.height)
-  def topRight = this.position + (this.width, 0.0)
+  def topLeft(position:Vector2D = this.position) = position
+  def bottomLeft(position:Vector2D = this.position) = position + (0.0, this.height)
+  def bottomRight(position:Vector2D = this.position) = position + (this.width, this.height)
+  def topRight(position:Vector2D = this.position) = position + (this.width, 0.0)
 }
