@@ -11,9 +11,12 @@
 			<artifactId>vainilla</artifactId>
 			<version>0.0.4</version>
 		</dependency>
+	
 	</dependencies>
 
 	<build>
+		<sourceDirectory>src/main/scala</sourceDirectory>
+		<testSourceDirectory>src/test/scala</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
