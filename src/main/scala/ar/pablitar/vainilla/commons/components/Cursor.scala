@@ -11,6 +11,7 @@ import com.uqbar.vainilla.appearances.Appearance
 class Cursor(val appearance:Appearance = new Circle(Color.WHITE, 20))  extends GameComponent[GameScene] {
   
   this.setAppearance(appearance)
+  this.setZ(10)
   
   override def update(state: DeltaState) = {
     val mousePos = state.getCurrentMousePosition
