@@ -18,6 +18,8 @@ case class Vector2D(var x1: Double, var x2: Double) {
   def -(aVector: Vector2D) = Vector2D(x1 - aVector.x1, x2 - aVector.x2)
 
   def *(aScalar: Double) = Vector2D(x1 * aScalar, x2 * aScalar)
+  
+  def *(scalarX1: Double, scalarX2: Double) = Vector2D(x1 * scalarX1, x2 * scalarX2)
 
   def /(aScalar: Double) = Vector2D(x1 / aScalar, x2 / aScalar)
   

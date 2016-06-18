@@ -7,6 +7,8 @@ import java.awt.Graphics2D
 import com.uqbar.vainilla.DeltaState
 
 case class WorldSpaceAnimation(a: Animation)(implicit val camera: Camera) extends WorldSpaceAppearance {
+ 
+  
   def height = a.getHeight
   def width = a.getWidth
 
@@ -19,4 +21,8 @@ case class WorldSpaceAnimation(a: Animation)(implicit val camera: Camera) extend
   }
 
   def doCopy = WorldSpaceAnimation(a)
+  
+  def flipHorizontally() = WorldSpaceAnimation(a.flipHorizontally())
+  
+  def reset() = a.reset()
 }

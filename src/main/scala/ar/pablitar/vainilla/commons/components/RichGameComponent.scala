@@ -5,6 +5,7 @@ import com.uqbar.vainilla.GameComponent
 import ar.pablitar.vainilla.commons.math.Vector2D
 import ar.pablitar.vainilla.commons.math.Bounds
 import ar.pablitar.vainilla.commons.math.InfiniteBounds
+import ar.pablitar.vainilla.commons.math.Orientation
 
 /**
  * @author pablitar
@@ -23,7 +24,13 @@ class RichGameComponent[T <: GameScene] extends GameComponent[T] with Positionab
 
   def position = Vector2D(getX, getY)
 
-  def center = this.position + (this.width / 2, this.height / 2)
+  def center:Vector2D = this.position + (this.width / 2, this.height / 2)
+  
+  def center(orientation: Orientation):Vector2D = {
+    this.center + (orientation.versor * (this.width / 2, this.height / 2))
+  }
+  
+  def centerRight = this.center + (this.width / 2, 0.0)
 
   def topLeft(position:Vector2D = this.position) = position
   def bottomLeft(position:Vector2D = this.position) = position + (0.0, this.height)

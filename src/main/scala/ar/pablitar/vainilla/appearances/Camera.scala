@@ -9,11 +9,11 @@ class Camera extends Positionable {
 
 
   def position: Vector2D = {
-    Vector2D(transform.getTranslateX(), transform.getTranslateY)
+    Vector2D(-transform.getTranslateX(), -transform.getTranslateY)
   }
 
   def position_=(p: Vector2D): Unit = {
-    transform.setToTranslation(p.x1, p.x2)
+    transform.setToTranslation(-p.x1, -p.x2)
   }
 
   def rotate(radians: Double) = {
