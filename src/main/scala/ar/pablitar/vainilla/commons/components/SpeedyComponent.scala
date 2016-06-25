@@ -13,9 +13,16 @@ import ar.pablitar.vainilla.commons.math.Bounds
  */
 trait SpeedyComponent[T <: GameScene] extends RichGameComponent[T] {
   
-  var speed = Vector2D(0, 0)
+  private var _speed = Vector2D(0, 0)
+  
+  def speed = _speed
+  def speed_=(aSpeed:Vector2D) = {
+    maxSpeed.fold(_speed = aSpeed)(maxSp => _speed = maxSp.min(maxSp))
+  } 
+  
   def acceleration = Option.empty[Vector2D]
   
+  def maxSpeed = Option.empty[Vector2D]
   
   def applySpeed(state: DeltaState, speed: Vector2D = this.speed) = {
     this.position = positionAfterSpeed(state, speed)

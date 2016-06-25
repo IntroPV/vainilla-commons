@@ -76,6 +76,10 @@ case class Vector2D(var x1: Double, var x2: Double) {
   def isOppositeTo(aVector: Vector2D) = {
     this.dotProduct(aVector) < 0
   }
+  
+  def distanceTo(aVector: Vector2D) = {
+    (aVector - this).module
+  }
 
   def translationMatrix = AffineTransform.getTranslateInstance(x1, x2)
 

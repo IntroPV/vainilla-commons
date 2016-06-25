@@ -24,16 +24,16 @@ class RichGameComponent[T <: GameScene] extends GameComponent[T] with Positionab
 
   def position = Vector2D(getX, getY)
 
-  def center:Vector2D = this.position + (this.width / 2, this.height / 2)
+  def center(position: Vector2D = this.position):Vector2D = (this.position - this.appearanceCenter) + (this.width / 2, this.height / 2)
   
-  def center(orientation: Orientation):Vector2D = {
-    this.center + (orientation.versor * (this.width / 2, this.height / 2))
+  def orientedCenter(orientation: Orientation, position: Vector2D = this.position): Vector2D = {
+    this.center(position) + (orientation.versor * (this.width / 2, this.height / 2))
   }
   
-  def centerRight = this.center + (this.width / 2, 0.0)
+  def appearanceCenter:Vector2D = (0,0)
 
-  def topLeft(position:Vector2D = this.position) = position
-  def bottomLeft(position:Vector2D = this.position) = position + (0.0, this.height)
-  def bottomRight(position:Vector2D = this.position) = position + (this.width, this.height)
-  def topRight(position:Vector2D = this.position) = position + (this.width, 0.0)
+  def topLeft(position:Vector2D = this.position) = position - this.appearanceCenter
+  def bottomLeft(position:Vector2D = this.position) = topLeft(position) + (0.0, this.height)
+  def bottomRight(position:Vector2D = this.position) = topLeft(position) + (this.width, this.height)
+  def topRight(position:Vector2D = this.position) = topLeft(position) + (this.width, 0.0)
 }
