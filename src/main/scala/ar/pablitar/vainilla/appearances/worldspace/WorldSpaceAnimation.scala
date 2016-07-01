@@ -6,8 +6,7 @@ import ar.pablitar.vainilla.appearances.WorldSpaceAppearance
 import java.awt.Graphics2D
 import com.uqbar.vainilla.DeltaState
 
-case class WorldSpaceAnimation(a: Animation)(implicit val camera: Camera) extends WorldSpaceAppearance {
- 
+case class WorldSpaceAnimation(a: Animation)(implicit val camera: Camera) extends WorldSpaceAppearance with ReseteableAppearance {
   
   def height = a.getHeight
   def width = a.getWidth
@@ -24,5 +23,5 @@ case class WorldSpaceAnimation(a: Animation)(implicit val camera: Camera) extend
   
   def flipHorizontally() = WorldSpaceAnimation(a.flipHorizontally())
   
-  def reset() = a.reset()
+  override def reset() = a.reset()
 }
