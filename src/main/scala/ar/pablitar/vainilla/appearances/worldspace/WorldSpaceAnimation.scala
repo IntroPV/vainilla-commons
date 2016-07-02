@@ -24,4 +24,8 @@ case class WorldSpaceAnimation(a: Animation)(implicit val camera: Camera) extend
   def flipHorizontally() = WorldSpaceAnimation(a.flipHorizontally())
   
   override def reset() = a.reset()
+  
+  def copyProgressFrom(anim: WorldSpaceAnimation) = {
+    a.copyProgressFrom(anim.a)
+  }
 }
