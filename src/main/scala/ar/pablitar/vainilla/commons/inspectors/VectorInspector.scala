@@ -2,6 +2,7 @@ package ar.pablitar.vainilla.commons.inspectors
 
 import com.uqbar.vainilla.GameComponent
 import com.uqbar.vainilla.GameScene
+
 import ar.pablitar.vainilla.commons.math.Vector2D
 
 /**
@@ -17,7 +18,7 @@ trait VectorSource {
 
 
 class VectorInspector(vectorGetter : () => Vector2D, originGetter: () => Vector2D = { () => Vector2D(0,0)})  extends GameComponent[GameScene] with VectorSource {
-  this.setAppearance(new VectorInspectoAppearance(this))
+  this.setAppearance(new VectorInspectorAppearance(this))
 
   def destination = {
     vectorGetter()

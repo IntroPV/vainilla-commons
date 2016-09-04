@@ -8,7 +8,7 @@ import java.awt.Color
 /**
  * @author pablitar
  */
-class VectorInspectoAppearance(val vi: VectorSource) extends Appearance {
+class VectorInspectorAppearance(val vi: VectorSource) extends Appearance {
   def update(delta: Double): Unit = {
   }
 

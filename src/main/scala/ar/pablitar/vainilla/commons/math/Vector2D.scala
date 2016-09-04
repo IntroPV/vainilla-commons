@@ -80,7 +80,15 @@ case class Vector2D(var x1: Double, var x2: Double) {
   def distanceTo(aVector: Vector2D) = {
     (aVector - this).module
   }
+  
+  def angle = Math.atan2(x2, x1)
 
   def translationMatrix = AffineTransform.getTranslateInstance(x1, x2)
+
+  def rotate(angle: Double) = {
+    val sina = Math.sin(angle)
+    val cosa = Math.cos(angle)
+    Vector2D(cosa * x1 - sina * x2, sina * x1 + cosa * x2) 
+  }
 
 }

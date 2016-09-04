@@ -17,4 +17,5 @@ case class Semiplane(puntoInterno: Vector2D, normal: Vector2D) {
   def puntoEstaDetras(punto: Vector2D) = {
     vectorDistanciaA(punto).isOppositeTo(normal)
   }
+  
 }

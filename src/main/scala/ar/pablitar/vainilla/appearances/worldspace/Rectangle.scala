@@ -5,8 +5,10 @@ import java.awt.Color
 import ar.pablitar.vainilla.appearances.Camera
 import java.awt.Graphics2D
 import com.uqbar.vainilla.appearances.Appearance
+import ar.pablitar.vainilla.commons.math.Vector2D
 
 case class Rectangle(val width: Double, val height: Double, color: Color)(implicit val camera: Camera = new Camera) extends WorldSpaceAppearance {
+  
   def doRenderAt(x: Double, y: Double, graphics: Graphics2D): Unit = {
     graphics.setColor(this.color);
     graphics.fillRect(x.toInt, y.toInt, this.width.toInt, this.height.toInt);
