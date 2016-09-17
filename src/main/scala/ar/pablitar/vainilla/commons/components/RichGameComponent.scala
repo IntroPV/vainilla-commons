@@ -1,17 +1,22 @@
 package ar.pablitar.vainilla.commons.components
 
-import com.uqbar.vainilla.GameScene
+import java.awt.Color
+import java.awt.Graphics2D
+
 import com.uqbar.vainilla.GameComponent
-import ar.pablitar.vainilla.commons.math.Vector2D
+import com.uqbar.vainilla.GameScene
+import com.uqbar.vainilla.appearances.Shape
+import com.uqbar.vainilla.appearances.SimpleAppearance
+
+import ar.pablitar.vainilla.appearances.WorldSpaceAppearance
+import ar.pablitar.vainilla.appearances.worldspace.Rectangle
 import ar.pablitar.vainilla.commons.math.Bounds
 import ar.pablitar.vainilla.commons.math.InfiniteBounds
 import ar.pablitar.vainilla.commons.math.Orientation
-import ar.pablitar.vainilla.appearances.worldspace.Rectangle
-import java.awt.Color
-import java.awt.Graphics2D
-import ar.pablitar.vainilla.appearances.WorldSpaceAppearance
-import com.uqbar.vainilla.appearances.Shape
-import com.uqbar.vainilla.appearances.SimpleAppearance
+import ar.pablitar.vainilla.commons.math.Vector2D
+import ar.pablitar.vainilla.commons.math.Vector2D.toVector2D
+import ar.pablitar.vainilla.commons.math.Vector2D.toVector2DFromInt
+import ar.pablitar.vainilla.appearances.Camera
 
 /**
  * @author pablitar
@@ -60,8 +65,11 @@ class RichGameComponent[T <: GameScene] extends GameComponent[T] with Positionab
   }
   
   def showDebug = false
+  
+  def cameraForDebug = new Camera()
 
   def renderDebugRectangleOnPosition(graphics: Graphics2D) = {
+    implicit val camera = cameraForDebug
     val debugRect = new Rectangle(3, 3, Color.YELLOW)
     val debugRect2 = new Rectangle(7, 7, Color.GREEN)
     debugRect2.render(this.position - (3, 3), graphics)

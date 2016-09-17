@@ -5,11 +5,15 @@ import ar.pablitar.vainilla.commons.math.Vector2D
 import java.awt.geom.AffineTransform
 import ar.pablitar.vainilla.commons.math.Semiplane
 import java.awt.Color
+import java.awt.BasicStroke
 
 object MathInspector {
 
   def renderVector(graphics: Graphics2D, origin: Vector2D, destination: Vector2D) = {
+    
     graphics.setColor(Color.WHITE)
+    val previousStroke = graphics.getStroke
+    graphics.setStroke(new BasicStroke(3))
     graphics.drawLine(origin.x1.toInt, origin.x2.toInt, destination.x1.toInt, destination.x2.toInt)
     val beforeTransform = graphics.getTransform()
     val newTransform = AffineTransform.getTranslateInstance(destination.x1, destination.x2)
@@ -20,6 +24,7 @@ object MathInspector {
     graphics.setTransform(newTransform)
     graphics.drawLine(0, 0, 10, 0)
     graphics.setTransform(beforeTransform)
+    graphics.setStroke(previousStroke)
   }
 
   def renderSemiplane(graphics: Graphics2D, s: Semiplane) = {

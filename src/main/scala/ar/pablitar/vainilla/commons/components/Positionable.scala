@@ -7,4 +7,6 @@ trait Positionable {
   def position_=(p: Vector2D):Unit
   
   def toLocalFromWorld(v: Vector2D) = v - position
+  
+  def toWorldFromLocal(v: Vector2D) = v + position
 }
